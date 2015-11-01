@@ -14,12 +14,22 @@ public class MainActivity extends Activity {
 
     private TextView wind;
     private Stack st = new Stack();
-    private String cur, op;
+    private String cur;
     private HashMap<Integer, String> num = new HashMap<>();
-    private HashMap<Integer, String> bop = new HashMap<>();
-    private HashMap<Integer, String> uop = new HashMap<>();
+    private HashMap<Integer, BinOp> bop = new HashMap<>();
+    private HashMap<Integer, UnOp> uop = new HashMap<>();
     private double t;
     private boolean bad;
+    private BinOp op;
+
+    enum BinOp {
+        MUL, DIV, ADD, SUB, NONE
+    }
+
+    enum UnOp {
+        SQRT, UMIN
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +47,14 @@ public class MainActivity extends Activity {
         num.put(R.id.button8, "8");
         num.put(R.id.button9, "9");
         num.put(R.id.button00, "00");
-        bop.put(R.id.buttonDiv, "/");
-        bop.put(R.id.buttonMul, "*");
-        bop.put(R.id.buttonAdd, "+");
-        bop.put(R.id.buttonSub, "-");
-        uop.put(R.id.buttonSQRT, "sqrt");
-        uop.put(R.id.buttonUm, "±");
+        bop.put(R.id.buttonDiv, BinOp.DIV);
+        bop.put(R.id.buttonMul, BinOp.MUL);
+        bop.put(R.id.buttonAdd, BinOp.ADD);
+        bop.put(R.id.buttonSub, BinOp.SUB);
+        uop.put(R.id.buttonSQRT, UnOp.SQRT);
+        uop.put(R.id.buttonUm, UnOp.UMIN);
         cur = "0";
-        op = "";
+        op = BinOp.NONE;
         bad = false;
         wind.setText(cur);
         t = 0;
@@ -110,12 +120,12 @@ public class MainActivity extends Activity {
         }
     }
 
-    private double unOp(String o) {
+    private double unOp(UnOp o) {
         switch (o) {
-            case "sqrt": {
+            case SQRT: {
                 return Math.sqrt(t);
             }
-            case "±": {
+            case UMIN: {
                 return ((Math.abs(t - 0) < 0.00000000001) ? 0 : t * (-1));
             }
         }
@@ -126,19 +136,19 @@ public class MainActivity extends Activity {
         double t1 = (double) st.pop();
         double t2 = (double) st.pop();
         switch (op) {
-            case "+": {
+            case ADD: {
                 st.push(t1 + t2);
                 break;
             }
-            case "-": {
+            case SUB: {
                 st.push(t2 - t1);
                 break;
             }
-            case "*": {
+            case MUL: {
                 st.push(t2 * t1);
                 break;
             }
-            case "/": {
+            case DIV: {
                 if (t1 == 0) {
                     bad = true;
                 }
@@ -169,7 +179,7 @@ public class MainActivity extends Activity {
         super.onRestoreInstanceState(savedInstanceState);
         t = savedInstanceState.getDouble("last");
         cur = savedInstanceState.getString("curr");
-        op = savedInstanceState.getString("oper");
+        op = (BinOp) savedInstanceState.get("oper");
         st = (Stack) savedInstanceState.get("stack");
         wind.setText(savedInstanceState.getString("disp"));
         bad = savedInstanceState.getBoolean("flag");
@@ -178,7 +188,7 @@ public class MainActivity extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         outState.putDouble("last", t);
         outState.putString("curr", cur);
-        outState.putString("oper", op);
+        outState.putSerializable("oper", op);
         outState.putSerializable("stack", st);
         outState.putString("disp", wind.getText().toString());
         outState.putSerializable("flag", bad);
