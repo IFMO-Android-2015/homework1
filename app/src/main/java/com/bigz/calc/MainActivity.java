@@ -1,19 +1,13 @@
 package com.bigz.calc;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Stack;
 
 public class MainActivity extends Activity {
@@ -97,7 +91,7 @@ public class MainActivity extends Activity {
         if (v.getId() == R.id.buttonE && !bad) {
             if (st.size() == 1) {
                 st.push(t);
-                doIt();
+                binOp();
                 cur = print((double) st.peek());
                 cur = (cur.equals("NaN") ? "Не число" : (cur.equals("Infinity") ? "Ошибка" : cur));
                 wind.setText(cur);
@@ -106,17 +100,17 @@ public class MainActivity extends Activity {
         } else if (bop.containsKey(v.getId()) && !bad) {
             st.push(t);
             if (st.size() == 2) {
-                doIt();
+                binOp();
             }
             op = bop.get(v.getId());
         } else if (uop.containsKey(v.getId()) && !bad) {
-            t = justDoIt(uop.get(v.getId()));
+            t = unOp(uop.get(v.getId()));
             cur = print(t);
             wind.setText(cur = (cur.equals("NaN") ? "Не число" : cur));
         }
     }
 
-    private double justDoIt(String o) {
+    private double unOp(String o) {
         switch (o) {
             case "sqrt": {
                 return Math.sqrt(t);
@@ -128,7 +122,7 @@ public class MainActivity extends Activity {
         return t;
     }
 
-    private void doIt() {
+    private void binOp() {
         double t1 = (double) st.pop();
         double t2 = (double) st.pop();
         switch (op) {
