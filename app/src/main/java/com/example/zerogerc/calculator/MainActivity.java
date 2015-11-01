@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class MainActivity extends AppCompatActivity {
     public final String TAG = "MainActivity";
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         if (new BigDecimal(second).equals(new BigDecimal(0))) {
             return INF;
         }
-        return new BigDecimal(first).divide(new BigDecimal(second)).toString();
+        return new BigDecimal(first).divide(new BigDecimal(second), 10, RoundingMode.CEILING).toString();
     }
 
     @Override
