@@ -149,7 +149,7 @@ public class MainActivity extends Activity {
                 break;
             }
             case DIV: {
-                if (t1 == 0) {
+                if (Math.abs(t - 0) < 0.00000000001) {
                     bad = true;
                 }
                 st.push(t2 / t1);
