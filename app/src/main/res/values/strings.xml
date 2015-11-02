@@ -1,4 +1,12 @@
 <resources>
-    <string name="app_name">calculator</string>
+    <string name="app_name">simple_calculator</string>
+    <string name="number1">number1</string>
+    <string name="number2">number2</string>
+    <string name="answer">answer</string>
+    <string name="currentOperation">currentOperation</string>
+    <string name="textOut">textOut</string>
+    <string name="doubleOperation">doubleOperation</string>
+    <string name="screenValue">screenValue</string>
+    <string name="clearDisplay">clearDisplay</string>
     <string name="action_settings">Settings</string>
 </resources>

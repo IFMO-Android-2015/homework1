@@ -1,1 +1,1 @@
-include ':app', ':simple_calculator'
+include ':app'
