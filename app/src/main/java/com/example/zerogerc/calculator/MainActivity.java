@@ -15,6 +15,12 @@ public class MainActivity extends AppCompatActivity {
     private final String MINF = "-Infinity";
     private final String NAN = "NaN";
 
+    static final String DISPLAY = "display";
+    static final String CURRENT_TEXT = "currentText";
+    static final String RESULT = "result";
+    static final String CURRENT_OPERATION = "currentOperation";
+    static final String HAS_COMMA = "hasComma";
+
     private TextView display;
     private StringBuilder currentText;
     private String result;
@@ -63,21 +69,22 @@ public class MainActivity extends AppCompatActivity {
         if (first.equals(NAN)) {
             return NAN;
         }
-        if (new BigDecimal(second).equals(new BigDecimal(0))) {
-            return NAN;
-        }
         if (first.equals(INF)) {
-            if (new BigDecimal(second).compareTo(new BigDecimal(0)) > 0) {
+            if (new BigDecimal(second).equals(new BigDecimal(0))) {
+                return NAN;
+            } else if (new BigDecimal(second).compareTo(new BigDecimal(0)) > 0) {
                 return INF;
             } else {
-                return "-".concat(INF);
+                return MINF;
             }
         }
         if (first.equals(MINF)) {
-            if (new BigDecimal(second).compareTo(new BigDecimal(0)) > 0) {
+            if (new BigDecimal(second).equals(new BigDecimal(0))) {
+                return NAN;
+            } else if (new BigDecimal(second).compareTo(new BigDecimal(0)) > 0) {
                 return MINF;
             } else {
-                return MINF.substring(1);
+                return INF;
             }
         }
         return (new BigDecimal(first).multiply(new BigDecimal(second))).toString();
@@ -121,29 +128,15 @@ public class MainActivity extends AppCompatActivity {
         this.display = (TextView)findViewById(R.id.display);
         this.display.setText("0");
 
-        this.currentText = new StringBuilder();
-
-        this.result = null;
-
-        this.currentOperation = "=";
-
-        this.hasComma = false;
+        this.resetFields();
     }
-
-    static final String DISPLAY = "display";
-    static final String CURRENT_TEXT = "currentText";
-    static final String RESULT = "result";
-    static final String CURRENT_OPERATION = "currentOperation";
-    static final String HAS_COMMA = "hasComma";
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putString(DISPLAY, this.display.getText().toString());
         savedInstanceState.putString(CURRENT_TEXT, this.currentText.toString());
-        if (this.result != null) {
-            savedInstanceState.putString(RESULT, this.result);
-        }
+        savedInstanceState.putString(RESULT, this.result);
         savedInstanceState.putString(CURRENT_OPERATION, this.currentOperation);
         savedInstanceState.putBoolean(HAS_COMMA, this.hasComma);
     }
@@ -154,12 +147,7 @@ public class MainActivity extends AppCompatActivity {
         this.display.setText(savedInstanceState.getString(DISPLAY));
         this.currentText = new StringBuilder();
         this.currentText.append(savedInstanceState.getString(CURRENT_TEXT));
-        try {
-            this.result = (savedInstanceState.getString(RESULT));
-        }
-        catch (NullPointerException e) {
-            this.result = null;
-        }
+        this.result = (savedInstanceState.getString(RESULT));
         this.currentOperation = savedInstanceState.getString(CURRENT_OPERATION);
         this.hasComma = savedInstanceState.getBoolean(HAS_COMMA);
     }
@@ -206,13 +194,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void resetFields() {
         this.currentText = new StringBuilder("");
-        this.result = null;
+        this.result = "0";
         this.currentOperation = "=";
         this.hasComma = false;
     }
 
     public void delete(View v) {
-        this.display.setText("0".toCharArray(), 0, 1);
+        this.display.setText("0");
         this.resetFields();
     }
 
