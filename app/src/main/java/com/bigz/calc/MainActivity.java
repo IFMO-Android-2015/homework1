@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
                 st.push(t);
                 binOp();
                 cur = print((double) st.peek());
-                cur = (cur.equals("NaN") ? "Не число" : (cur.equals("Infinity") ? "Ошибка" : cur));
+                cur = (cur.equals("NaN") ? "Не число" : (cur.contains("Infinity") ? "Ошибка" : cur));
                 wind.setText(cur);
             }
 
