@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="8"
+    android:baselineAligned="false">
+
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:textSize="30sp"
+        android:text="0"
+        android:textAlignment="gravity"
+        android:gravity="center_vertical|right" />
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/clear"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            tools:ignore="NestedWeights"
+            android:onClick="delete" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/delete"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:onClick="deleteOne" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/plus_minus"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:onClick="swapSign" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/divide"
+            android:textSize="20sp"
+            android:background="@color/orange"
+            android:onClick="applyOperation" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        <Button
+            android:id="@+id/button_7"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/seven"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            tools:ignore="NestedWeights"
+            android:onClick="addDigit"/>
+        <Button
+            android:id="@+id/button_8"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/eight"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:onClick="addDigit"/>
+        <Button
+            android:id="@+id/button_9"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/nine"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:onClick="addDigit"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/multiply"
+            android:textSize="20sp"
+            android:background="@color/orange"
+            android:onClick="applyOperation" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        <Button
+            android:id="@+id/button_4"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/four"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            tools:ignore="NestedWeights"
+            android:onClick="addDigit"/>
+        <Button
+            android:id="@+id/button_5"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/five"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:onClick="addDigit"/>
+        <Button
+            android:id="@+id/button_6"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/six"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:onClick="addDigit"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/minus"
+            android:textSize="20sp"
+            android:background="@color/orange"
+            android:onClick="applyOperation" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        <Button
+            android:id="@+id/button_1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/one"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            tools:ignore="NestedWeights"
+            android:onClick="addDigit"/>
+        <Button
+            android:id="@+id/button_2"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/two"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:onClick="addDigit"/>
+        <Button
+            android:id="@+id/button_3"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/three"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:onClick="addDigit"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/plus"
+            android:textSize="20sp"
+            android:background="@color/orange"
+            android:onClick="applyOperation" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        <Button
+            android:id="@+id/button_0"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:text="@string/zero"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            tools:ignore="NestedWeights"
+            android:onClick="addDigit" />
+        <Button
+            android:id="@+id/button_comma"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/comma"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:onClick="addComma"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/enter"
+            android:textSize="20sp"
+            android:background="@color/orange"
+            android:onClick="printResult" />
+    </LinearLayout>
+</LinearLayout>
