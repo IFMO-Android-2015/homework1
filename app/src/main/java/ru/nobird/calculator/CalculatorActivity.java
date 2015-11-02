@@ -47,7 +47,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private class Container {
-        private long a = 0, b = 0;
+        private double a = 0, b = 0;
         private boolean isFirst = true;
         private int operation;
     }
@@ -76,7 +76,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void update() {
-        result.setText(Long.toString(data.isFirst ? data.a : data.b));
+        result.setText(Double.toString(data.isFirst ? data.a : data.b));
     }
 
     private void equality() {
@@ -99,7 +99,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private long operation(long a, long b, int type) {
+    private double operation(double a, double b, int type) {
         switch (type) {
             case 0: return a + b;
             case 1: return a - b;
@@ -111,11 +111,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void clear() {
-        if (data.isFirst) {
-            data.a /= 10;
-        } else {
-            data.b /= 10;
-        }
+        data.isFirst = true;
+        data.a = 0;
+        data.b = 0;
     }
     private void add(final int i) {
         if (data.isFirst) {
