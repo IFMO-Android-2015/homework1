@@ -104,14 +104,14 @@ public class MainActivity extends AppCompatActivity {
             if (new BigDecimal(second).compareTo(new BigDecimal(0)) >= 0) {
                 return INF;
             } else {
-                return "-".concat(INF);
+                return MINF;
             }
         }
         if (first.equals(MINF)) {
             if (new BigDecimal(second).compareTo(new BigDecimal(0)) >= 0) {
                 return MINF;
             } else {
-                return MINF.substring(1);
+                return INF;
             }
         }
         if (new BigDecimal(second).equals(new BigDecimal(0))) {
