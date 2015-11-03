@@ -43,11 +43,28 @@ public class CalculatorMainActivity extends ActionBarActivity implements View.On
         R.id.ACButton
     };
 
+    void pushOperand() {
+        double value = 0;
+        try {
+            value = Double.valueOf(resultTextView.getText().toString());
+        }catch (Exception e) {
+            //пусть вводит заново
+            userIsInTheMiddleOfTypingANumber = false;
+            resultTextView.setText("0");
+            return;
+        }
+        brain.pushOperand(value);
+        resultTextView.setText("0");
+        userIsInTheMiddleOfTypingANumber = false;
+    }
+
     View.OnClickListener operationsListener = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
             Button btn = (Button)v;
+            if(userIsInTheMiddleOfTypingANumber)
+                pushOperand();
             brain.pushOperation(btn.getText().charAt(0));
             resultTextView.setText("0");
             userIsInTheMiddleOfTypingANumber = false;
@@ -107,17 +124,7 @@ public class CalculatorMainActivity extends ActionBarActivity implements View.On
                 userIsInTheMiddleOfTypingANumber = false;
                 break;
             case R.id.enterButton:
-                double value = 0;
-                try {
-                    value = Double.valueOf(resultTextView.getText().toString());
-                }catch (Exception e) {
-                    //пусть вводит заново
-                    userIsInTheMiddleOfTypingANumber = false;
-                    resultTextView.setText("0");
-                    return;
-                }
-                brain.pushOperand(value);
-                resultTextView.setText("0");
+                pushOperand();
                 break;
         }
         userIsInTheMiddleOfTypingANumber = false;

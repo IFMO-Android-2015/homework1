@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.ifmo.android_2015.ivan_pavlov.calculator"
-        minSdkVersion 7
+        minSdkVersion 17
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
