@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="ACSymbol">AC</string>
+    <string name="changeSymbol">±</string>
+    <string name="percentageSymbol">%</string>
+    <string name="divideSymbol">/</string>
+    <string name="num7Symbol">7</string>
+    <string name="num8Symbol">8</string>
+    <string name="num9Symbol">9</string>
+    <string name="multiplicationSymbol">×</string>
+    <string name="num4Symbol">4</string>
+    <string name="num5Symbol">5</string>
+    <string name="num6Symbol">6</string>
+    <string name="subtractSymbol">-</string>
+    <string name="num1Symbol">1</string>
+    <string name="num2Symbol">2</string>
+    <string name="num3Symbol">3</string>
+    <string name="addSymbol">+</string>
+    <string name="num0Symbol">0</string>
+    <string name="dotSymbol">.</string>
+    <string name="evaluateSymbol">=</string>
+    <string name="enterSymbol">enter</string>
+</resources>
