@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+
+    </style>
+
+    <style name="Button" parent="android:Widget.Holo.Button.Borderless">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16pt</item>
+        <item name="android:background">@drawable/button_animation</item>
+        <item name="android:onClick">ButtonClicked</item>
+    </style>
+</resources>
