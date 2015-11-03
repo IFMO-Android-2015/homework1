@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CalcButtonTheme" parent="@android:style/Widget.Button">
+        <item name="android:textSize">40sp</item>
+        <item name="android:padding">0px</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/digit_button</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+</resources>
