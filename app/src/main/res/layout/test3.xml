@@ -22,6 +22,7 @@
 
             android:id="@+id/text"
             android:textSize="50sp"
+            android:text=""
 
             android:scrollbars="vertical"
             android:gravity="bottom|end"/>
@@ -40,6 +41,11 @@
             android:text="@string/bSign"
             style="@style/ButtonStyle"
             android:onClick="onSignClicked"/>
+        <!--<Button-->
+        <!--android:id="@+id/bMod"-->
+        <!--android:text="@string/bMod"-->
+        <!--style="@style/ButtonStyle"-->
+        <!--android:onClick="onModClicked"/>-->
         <Button
             android:id="@+id/bDiv"
             android:text="@string/bDiv"

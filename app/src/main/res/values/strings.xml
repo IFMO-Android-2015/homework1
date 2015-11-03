@@ -25,4 +25,6 @@
 
     <string name="bClear">C</string>
 
+    <string name="error">ERROR</string>
+
 </resources>
