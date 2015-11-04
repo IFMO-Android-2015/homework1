@@ -135,13 +135,13 @@ public class CalculatorMainActivity extends ActionBarActivity implements View.On
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putBoolean("userIsInTheMiddleOfTypingANumber", this.userIsInTheMiddleOfTypingANumber);
         savedInstanceState.putCharSequence("textViewData", this.resultTextView.getText());
-        savedInstanceState.putSerializable("brain", this.brain);
+        savedInstanceState.putParcelable("brain", this.brain);
     }
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         this.userIsInTheMiddleOfTypingANumber = savedInstanceState.getBoolean("userIsInTheMiddleOfTypingANumber");
         this.resultTextView.setText(savedInstanceState.getCharSequence("textViewData"));
-        this.brain = (CalculatorBrain)savedInstanceState.getSerializable("brain");
+        this.brain = (CalculatorBrain)savedInstanceState.getParcelable("brain");
     }
 }
