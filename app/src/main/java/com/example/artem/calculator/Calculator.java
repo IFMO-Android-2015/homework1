@@ -123,7 +123,8 @@ public class Calculator extends AppCompatActivity {
     }
 
     public void onSignClicked(View view) {
-        if (secondNumStr.length() > 0) {
+        if (secondNumStr.length() > 0 &&
+                !(secondNumStr.length() == 1 && secondNumStr.charAt(0) == '0')) {
             if (secondNumStr.charAt(0) != '-') {
                 secondNumStr.insert(0, '-');
             } else {
