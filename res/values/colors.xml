@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="background" type="color">#313131</item>
+    <item name="textview" type="color">#FFFFFF</item>
+    <item name="digit" type="color">#856B20</item>
+    <item name="operator" type="color">#6D7C1C</item>
+    <item name="clear" type="color">#A43D2A</item>
+    <item name="result" type="color">#418072</item>
+</resources> 
