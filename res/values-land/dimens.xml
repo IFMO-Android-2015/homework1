@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="activity_margin">5dp</dimen>
+    <dimen name="button_margin">4dp</dimen>
+
+    <item name="textview_weight" format="float" type="dimen">0.25</item>
+    <item name="button_weight" format="float" type="dimen">0.164</item>
+
+    <dimen name="button_font_size">40sp</dimen>
+    <dimen name="textview_font_size">37sp</dimen>
+</resources>
