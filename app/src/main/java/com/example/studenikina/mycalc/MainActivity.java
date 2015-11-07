@@ -10,6 +10,7 @@ import android.widget.EditText;
 import java.lang.String;
 
 
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     EditText etNum1;
 
@@ -35,11 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     String oper = "";
     String st1 = "";
-    String st2 = "";
 
     float num1 = 0;
     float num2 = 0;
     float result = 0;
+
+    boolean old = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,12 +95,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn9.setOnClickListener((View.OnClickListener) this);
     }
 
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putFloat("number1", num1);
+        outState.putFloat("number2", num2);
+        outState.putFloat("result", result);
+        outState.putString("operation", oper);
+        outState.putString("string", st1);
+        outState.putBoolean("age", old);
+        outState.putString("text", (String) tvResult.getText());
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        num1 = savedInstanceState.getFloat("number1");
+        num2 = savedInstanceState.getFloat("number2");
+        result = savedInstanceState.getFloat("result");
+        oper = savedInstanceState.getString("operation");
+        st1 = savedInstanceState.getString("string");
+        old = savedInstanceState.getBoolean("age");
+        tvResult.setText(savedInstanceState.getString("text"));
+    }
+
     public void onClick(View v) {
 
         // определяем нажатую кнопку и выполняем соответствующую операцию
         // в oper пишем операцию, потом будем использовать в выводе
         switch (v.getId()) {
-            //бред какой-то
             case R.id.btn0:st1+="0";
                 etNum1.setText(st1);
                 break;
@@ -129,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn9:st1+="9";
                 etNum1.setText(st1);
                 break;
-            // op op oppapa
+            // ----
             case R.id.btnComm:st1+=".";
                 etNum1.setText(st1);
                 break;
@@ -142,8 +165,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 num1 =  Float.parseFloat(etNum1.getText().toString());
                 etNum1.setText("");
                 st1 = "";
-                //tvResult.setText(num1 + " ");
-                //result = num1 + num2;
                 break;
             case R.id.btnSub:
                 oper = "-";
@@ -154,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 num1 =  Float.parseFloat(etNum1.getText().toString());
                 etNum1.setText("");
                 st1 = "";
-                //result = num1 - num2;
                 break;
             case R.id.btnMult:
                 oper = "*";
@@ -165,7 +185,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 num1 =  Float.parseFloat(etNum1.getText().toString());
                 etNum1.setText("");
                 st1 = "";
-                //result = num1 * num2;
                 break;
             case R.id.btnDiv:
                 oper = "/";
@@ -176,11 +195,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 num1 =  Float.parseFloat(etNum1.getText().toString());
                 etNum1.setText("");
                 st1 = "";
-                //result = num1 / num2;
                 break;
             //------
-            case R.id.btnAC:     //OK
+            case R.id.btnAC:
                 oper = "AC";
+                old = false;
                 result = 0;
                 num1 = num2 = 0;
                 st1 = "";
@@ -188,12 +207,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvResult.setText("");
                 break;
             case R.id.btnEq:
-                //oper = "=";
                 if (TextUtils.isEmpty(st1)) {
                     tvResult.setText("Error. try again");
                     return;
                 }
                 num2 = Float.parseFloat(st1);
+                if(old == true)
+                    num1 = result;
                 switch (oper) {
                     case "+":
                         result = num1 + num2;
@@ -209,15 +229,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             result = num1  / num2;
                         }
                         else {
-                            tvResult.setText("Error. You are fool. You divide by zero :(");
+                            tvResult.setText("Error. You divide by zero :'(");
                             return;
                         }
                         break;
                     default:
                         break;
                 }
+                old = true;
                 tvResult.setText(num1 + " " + oper + " " + num2 + " = " + result);
-                //num2 = result;
                 break;
             default:
                 break;
