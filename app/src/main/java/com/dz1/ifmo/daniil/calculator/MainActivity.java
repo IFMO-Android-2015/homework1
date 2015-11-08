@@ -1,9 +1,7 @@
 package com.dz1.ifmo.daniil.calculator;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,87 +9,73 @@ import expression.CheckedParser;
 import expression.types.CheckedBigDecimal;
 
 public class MainActivity extends AppCompatActivity {
-    public TextView expression;
-    public TextView memoryStatus;
-    public String memory;
-    public int flag;
-    public boolean finishCalc;
-    public boolean writeInMem;
-    public CalcTask ct;
+    private TextView expression;
+    private TextView memoryStatus;
+    private String memory;
+    private boolean finishCalc;
+    private boolean writeInMem;
 
-    static public class CalcTask extends AsyncTask<String, Void, String> {
-        private MainActivity activity;
+    private enum  ResultStatus {COMPLETE, OK, ERROR};
+    private ResultStatus resultStatus = ResultStatus.COMPLETE;
 
-        void attachActivity(MainActivity activity) {
-            this.activity = activity;
+
+    private void evaluateExpression(String expr) {
+        String result;
+        try {
+            result = new CheckedParser<>(new CheckedBigDecimal("0")).parse(expr).evaluate().toString();
+        } catch (Exception e) {
+            result = "Error";
         }
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                if (params[0].length() != 0) {
-                    return new CheckedParser<>(new CheckedBigDecimal("0")).parse(params[0]).evaluate().toString();
-                } else {
-                    return "";
-                }
-            } catch (Exception e) {
-                return "Error";
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            if (activity.writeInMem == true) {
-                activity.memory = result;
+        if (writeInMem) {
+            memory = result;
+        } else {
+            expression.setText(result);
+            if (result.equals("Error")) {
+                resultStatus = ResultStatus.ERROR;
             } else {
-                activity.expression.setText(result);
-                if (result.equals("Error")) {
-                    activity.flag = 2;
-                } else {
-                    activity.flag = 1;
-                }
+                resultStatus = ResultStatus.OK;
             }
-            activity.finishCalc = true;
         }
+        finishCalc = true;
     }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("DEBUG", "Create new activity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         expression = (TextView) findViewById(R.id.expr);
         memoryStatus = (TextView) findViewById(R.id.mexpr);
 
-        ct = (CalcTask) getLastCustomNonConfigurationInstance();
-        if (ct != null) {
-            ct.attachActivity(this);
-        }
-
         if (savedInstanceState != null) {
             expression.setText(savedInstanceState.getString("EXPRESSION"));
             memoryStatus.setText(savedInstanceState.getString("MEMORY_STATUS"));
             memory = savedInstanceState.getString("MEMORY");
-            flag = savedInstanceState.getInt("FLAG");
+            resultStatus = ResultStatus.values()[savedInstanceState.getInt("RESULT_STATUS")];
             finishCalc = savedInstanceState.getBoolean("FINISH_CALC");
             writeInMem = savedInstanceState.getBoolean("WRITE_IN_MEMORY");
         } else {
             memory ="";
-            flag = 0;
+            resultStatus = ResultStatus.COMPLETE;
             finishCalc = true;
             writeInMem = true;
         }
     }
 
-    public boolean toClear(View v) {
-        return  ((v.getId() == R.id.Button0) || (v.getId() == R.id.Button1) || (v.getId() == R.id.Button2)
-                || (v.getId() == R.id.Button3) || (v.getId() == R.id.Button4) || (v.getId() == R.id.Button5)
-                || (v.getId() == R.id.Button6) || (v.getId() == R.id.Button7) || (v.getId() == R.id.Button8)
-                || (v.getId() == R.id.Button9) || (v.getId() == R.id.dotButton) || (v.getId() == R.id.lBButton)
-                || (v.getId() == R.id.rBButton) || (v.getId() == R.id.piButton) || (v.getId() == R.id.eButton));
+    private void addOperationToExp(String x) {
+        if (expression.length() != 0) {
+            expression.append(x);
+        }
+    }
+
+    private boolean toClear(View v) {
+        int  id = v.getId();
+        return  ((id == R.id.Button0) || (id == R.id.Button1) || (id == R.id.Button2)
+                || (id == R.id.Button3) || (id == R.id.Button4) || (id == R.id.Button5)
+                || (id == R.id.Button6) || (id == R.id.Button7) || (id == R.id.Button8)
+                || (id == R.id.Button9) || (id == R.id.dotButton) || (id == R.id.leftBracketButton)
+                || (id == R.id.rightBracketButton) || (id == R.id.piButton) || (id == R.id.eButton));
     }
 
     public void onClick(View v) {
@@ -99,23 +83,23 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (flag == 2) {
+        if (resultStatus.equals(ResultStatus.ERROR)) {
             expression.setText("");
-            flag = 0;
+            resultStatus = ResultStatus.COMPLETE;
         }
 
-        if (flag == 1) {
+        if (resultStatus.equals(ResultStatus.OK)) {
             if (toClear(v)) {
                 expression.setText("");
             }
-            flag = 0;
+            resultStatus = ResultStatus.COMPLETE;
         }
 
         switch (v.getId()) {
-            case R.id.lBButton :
+            case R.id.leftBracketButton :
                 expression.append("(");
                 break;
-            case R.id.rBButton :
+            case R.id.rightBracketButton :
                 expression.append(")");
                 break;
             case R.id.x2Button :
@@ -135,9 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     memoryStatus.setText("M");
                     finishCalc = false;
                     writeInMem = true;
-                    ct = new CalcTask();
-                    ct.attachActivity(this);
-                    ct.execute(memory + "-" + expression.getText().toString());
+                    evaluateExpression(memory + "-" + expression.getText().toString());
                 }
                 break;
             case R.id.mPButton :
@@ -148,15 +130,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                     finishCalc = false;
                     writeInMem = true;
-                    ct = new CalcTask();
-                    ct.attachActivity(this);
-                    ct.execute(memory + expression.getText().toString());
+                    evaluateExpression(memory + expression.getText().toString());
                 }
                 break;
             case R.id.mRButton :
                 if (memory.length() != 0) {
                     if (memory.equals("Error")) {
-                        flag = 2;
+                        resultStatus = ResultStatus.ERROR;
                     }
                     expression.append(memory);
                 }
@@ -207,36 +187,23 @@ public class MainActivity extends AppCompatActivity {
                 expression.append(".");
                 break;
             case R.id.plusButton :
-                if (expression.length() != 0) {
-                    expression.append("+");
-                }
+                addOperationToExp("+");
                 break;
             case R.id.minusButton :
                 expression.append("-");
                 break;
             case R.id.divButton :
-                if (expression.length() != 0) {
-                    expression.append("/");
-                }
+                addOperationToExp("/");
                 break;
             case R.id.mulButton :
-                if (expression.length() != 0) {
-                    expression.append("*");
-                }
+                addOperationToExp("*");
                 break;
             case R.id.equalButton :
                 finishCalc = false;
                 writeInMem = false;
-                ct = new CalcTask();
-                ct.attachActivity(this);
-                ct.execute(expression.getText().toString());
+                evaluateExpression(expression.getText().toString());
                 break;
         }
-    }
-
-    @Override
-    public Object onRetainCustomNonConfigurationInstance() {
-        return ct;
     }
 
     @Override
@@ -245,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("EXPRESSION", expression.getText().toString());
         outState.putString("MEMORY_STATUS", memoryStatus.getText().toString());
         outState.putString("MEMORY", memory);
-        outState.putInt("FLAG", flag);
+        outState.putInt("RESULT_STATUS", resultStatus.ordinal());
         outState.putBoolean("FINISH_CALC", finishCalc);
         outState.putBoolean("WRITE_IN_MEMORY", writeInMem);
     }

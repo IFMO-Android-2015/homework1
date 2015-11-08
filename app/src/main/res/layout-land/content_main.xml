@@ -11,19 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#ebf2fa">
 
-        <TextView
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:background="#ebf2fa"
-            android:gravity="center|right|bottom"
-            android:text=""
-            android:textSize="52dp"
-            android:textColor="#000000"
-            android:textStyle="normal"
-            android:id="@+id/expr" />
+            android:scrollbars="none"
+            android:layoutDirection="rtl">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#ebf2fa"
+                android:gravity="right"
+                android:singleLine="true"
+                android:text=""
+                android:textSize="52dp"
+                android:textColor="#000000"
+                android:textStyle="normal"
+                android:id="@+id/expr" />
+        </HorizontalScrollView>
+
+
 
         <TextView
             android:layout_width="match_parent"
@@ -49,7 +60,7 @@
             android:layout_weight="1"
             style="@style/SecondButtonStyle"
             android:text="("
-            android:id="@+id/lBButton"
+            android:id="@+id/leftBracketButton"
             android:onClick="onClick"/>
 
         <Button
@@ -58,7 +69,7 @@
             android:layout_weight="1"
             style="@style/SecondButtonStyle"
             android:text=")"
-            android:id="@+id/rBButton"
+            android:id="@+id/rightBracketButton"
             android:onClick="onClick"/>
 
         <Button
