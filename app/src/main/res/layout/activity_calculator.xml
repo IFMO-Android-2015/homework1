@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="bottom">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:gravity="bottom">
+
+        <Button style="@style/square_button"
+            android:id="@+id/clear"
+            android:text="@string/clear"
+            android:onClick="buttonClick"
+            android:layout_weight="4"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            android:id="@+id/input"
+            android:textSize="50sp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:textAlignment="textEnd"/>
+
+    </LinearLayout>
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_margin="10dp">
+            <TableRow>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit1"
+                    android:onClick="buttonClick"
+                    android:text="@string/one"/>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit2"
+                    android:onClick="buttonClick"
+                    android:text="@string/two"/>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit3"
+                    android:onClick="buttonClick"
+                    android:text="@string/three"/>
+                <Button style="@style/long_button"
+                    android:id="@+id/plus"
+                    android:onClick="buttonClick"
+                    android:text="@string/plus"/>
+            </TableRow>
+            <TableRow>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit4"
+                    android:onClick="buttonClick"
+                    android:text="@string/four"/>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit5"
+                    android:onClick="buttonClick"
+                    android:text="@string/five"/>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit6"
+                    android:onClick="buttonClick"
+                    android:text="@string/six"/>
+                <Button style="@style/long_button"
+                    android:id="@+id/minus"
+                    android:onClick="buttonClick"
+                    android:text="@string/minus"/>
+            </TableRow>
+            <TableRow>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit7"
+                    android:onClick="buttonClick"
+                    android:text="@string/seven"/>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit8"
+                    android:onClick="buttonClick"
+                    android:text="@string/eight"/>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit9"
+                    android:onClick="buttonClick"
+                    android:text="@string/nine"/>
+                <Button style="@style/long_button"
+                    android:id="@+id/multiply"
+                    android:onClick="buttonClick"
+                    android:text="@string/multiply"/>
+            </TableRow>
+            <TableRow>
+                <Button style="@style/square_button"
+                    android:id="@+id/dot"
+                    android:onClick="buttonClick"
+                    android:text="@string/dot"/>
+                <Button style="@style/square_button"
+                    android:id="@+id/digit0"
+                    android:onClick="buttonClick"
+                    android:text="@string/zero"/>
+                <Button style="@style/square_button"
+                    android:id="@+id/equals"
+                    android:onClick="buttonClick"
+                    android:text="@string/equals"/>
+                <Button style="@style/long_button"
+                    android:id="@+id/divide"
+                    android:onClick="buttonClick"
+                    android:text="@string/divide"/>
+            </TableRow>
+        </TableLayout>
+</LinearLayout>
