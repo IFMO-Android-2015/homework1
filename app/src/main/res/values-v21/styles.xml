@@ -1,0 +1,30 @@
+<resources>>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="NumberButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:textSize">12pt</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/firstbutton</item>
+        <item name="android:textStyle">bold</item>
+   </style>
+
+    <style name="OperationButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:textSize">12pt</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/firstbutton</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+   <style name="SecondButtonStyle" parent="@android:style/Widget.Button">
+       <item name="android:textSize">12pt</item>
+       <item name="android:textColor">#000000</item>
+       <item name="android:background">@drawable/secondbutton</item>
+       <item name="android:textStyle">normal</item>
+   </style>
+
+</resources>
