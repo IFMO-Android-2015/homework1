@@ -1,14 +1,8 @@
 package com.example.home.myapplication;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -48,12 +42,13 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
                 case ("/"): {
-                    StringBuilder temp = new StringBuilder(buffer);
-                    if (temp.charAt(0) == '-')
-                        temp.delete(0, 1);
-                    if (temp.charAt(temp.length() - 1) == '.')
-                        temp.delete(temp.length() - 1, temp.length());
-                    if (temp.toString().compareTo("0") == 0) {
+                    boolean zero = true;
+                    for (int i = 0; i < buffer.length(); i++)
+                        if (buffer.charAt(i) != '-' && buffer.charAt(i) != '0' && buffer.charAt(i) != '.') {
+                            zero = false;
+                            break;
+                        }
+                    if (zero) {
                         error = true;
                         ((TextView) findViewById(R.id.textTempBuffer)).setText("Divide by zero");
                         return;
@@ -119,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
         action = savedInstanceState.getString("action");
         validbuff = savedInstanceState.getBoolean("validbuff");
         error = savedInstanceState.getBoolean("error");
-        shownumber(false);
+        if (error)
+            ((TextView) findViewById(R.id.textTempBuffer)).setText("Divide by zero");
     }
 
     public void reset(View v) {
@@ -131,12 +127,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void resetbuff(View v) {
-        if (error) {
-            result = BigDecimal.ZERO;
-            error = false;
+        if (!error) {
+            clearbuff();
+            shownumber(true);
         }
-        clearbuff();
-        shownumber(true);
     }
 
     public void changesign(View v) {
