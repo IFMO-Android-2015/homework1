@@ -116,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
         error = savedInstanceState.getBoolean("error");
         if (error)
             ((TextView) findViewById(R.id.textTempBuffer)).setText("Divide by zero");
+		else
+			shownumber(false);
     }
 
     public void reset(View v) {
