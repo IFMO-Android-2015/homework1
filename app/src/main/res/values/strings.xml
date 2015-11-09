@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="action_settings">Settings</string>
+    <string name="C">C</string>
+    <string name="change_sign">+/-</string>
+    <string name="persentage">%</string>
+    <string name="divide">/</string>
+    <string name="equal">=</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="multiply">*</string>
+    <string name="division">/</string>
+    <string name="signchange">+/-</string>
+    <string name="CE">CE</string>
+    <string name="Clear">C</string>
+</resources>
