@@ -136,6 +136,9 @@ public class MainActivity extends Activity {
                             if (st.length() > 0 && st.charAt(st.length() - 1) == '.') {
                                 st = st.substring(0, st.length() - 1);
                             }
+                            if (st.equals("-0")) {
+                                st = "0";
+                            }
                             st = "Answer is " + st;
                             text.setText(st);
                             st = "";
@@ -156,6 +159,9 @@ public class MainActivity extends Activity {
                             if (st.equals("NaN") || st.equals("Infinity") || st.equals("-Infinity")) {
                                 st = "Error";
                             } else {
+                                if (st.equals("-0")) {
+                                    st = "0";
+                                }
                                 st = "Answer is " + st;
                             }
                             text.setText(st);
