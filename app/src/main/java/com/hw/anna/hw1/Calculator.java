@@ -73,11 +73,11 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
             switch(tmp) {
                 case '+':
                     p++;
-                    first += parsePriorityThird();
+                    first += parsePrioritySecond();
                     break;
                 case '-':
                     p++;
-                    first -= parsePriorityThird();
+                    first -= parsePrioritySecond();
                     break;
                 default:
                     return first;
@@ -133,7 +133,9 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         if (neg) {
             s = "-" + s;
         }
-        answ = Double.parseDouble(s);
+        if (s.length() > 0) {
+            answ = Double.parseDouble(s);
+        }
         return answ;
     }
 
@@ -146,102 +148,109 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        int ID = v.getId();
-        if ((checkLen(expr)) || (ID == R.id.butC) || (ID == R.id.butAC) || (ID == R.id.butEq)) {
-            switch (ID) {
-                case R.id.but1:
-                    expr += "1";
-                    res.setText(expr);
-                    break;
-                case R.id.but2:
-                    expr += "2";
-                    res.setText(expr);
-                    break;
-                case R.id.but3:
-                    expr += "3";
-                    res.setText(expr);
-                    break;
-                case R.id.but4:
-                    expr += "4";
-                    res.setText(expr);
-                    break;
-                case R.id.but5:
-                    expr += "5";
-                    res.setText(expr);
-                    break;
-                case R.id.but6:
-                    expr += "6";
-                    res.setText(expr);
-                    break;
-                case R.id.but7:
-                    expr += "7";
-                    res.setText(expr);
-                    break;
-                case R.id.but8:
-                    expr += "8";
-                    res.setText(expr);
-                    break;
-                case R.id.but9:
-                    expr += "9";
-                    res.setText(expr);
-                    break;
-                case R.id.but0:
-                    expr += "0";
-                    res.setText(expr);
-                    break;
-                case R.id.butPoint:
-                    expr += ".";
-                    res.setText(expr);
-                    break;
-                case R.id.butPlus:
-                    if (isBinOperation(expr.charAt(expr.length() - 1))) {
-                        expr = expr.substring(0, expr.length() - 1);
-                    }
-                    expr += "+";
-                    res.setText(expr);
-                    break;
-                case R.id.butMinus:
-                    if (isBinOperation(expr.charAt(expr.length() - 1))) {
-                        expr = expr.substring(0, expr.length() - 1);
-                    }
-                    expr += "-";
-                    res.setText(expr);
-                    break;
-                case R.id.butMul:
-                    if (isBinOperation(expr.charAt(expr.length() - 1))) {
-                        expr = expr.substring(0, expr.length() - 1);
-                    }
-                    expr += "*";
-                    res.setText(expr);
-                    break;
-                case R.id.butDiv:
-                    if (isBinOperation(expr.charAt(expr.length() - 1))) {
-                        expr = expr.substring(0, expr.length() - 1);
-                    }
-                    expr += "/";
-                    res.setText(expr);
-                    break;
-                case R.id.butC:
-                    expr = expr.substring(0, expr.length() - 1);
-                    res.setText(expr);
-                    break;
-                case R.id.butAC:
-                    expr = "";
-                    res.setText(expr);
-                    break;
-                case R.id.butEq:
-                    p = 0;
-                    String exAn = "";
-                    try {
-                        double answ = parsePriorityFirst();
-                        exAn = Double.toString(answ);
-                    } catch (Exception e) {
-                        exAn = "Error";
-                    }
-                    expr = "";
-                    res.setText(exAn);
-                    break;
+        try {
+            int ID = v.getId();
+            if ((checkLen(expr)) || (ID == R.id.butC) || (ID == R.id.butAC) || (ID == R.id.butEq)) {
+                switch (ID) {
+                    case R.id.but1:
+                        expr += "1";
+                        res.setText(expr);
+                        break;
+                    case R.id.but2:
+                        expr += "2";
+                        res.setText(expr);
+                        break;
+                    case R.id.but3:
+                        expr += "3";
+                        res.setText(expr);
+                        break;
+                    case R.id.but4:
+                        expr += "4";
+                        res.setText(expr);
+                        break;
+                    case R.id.but5:
+                        expr += "5";
+                        res.setText(expr);
+                        break;
+                    case R.id.but6:
+                        expr += "6";
+                        res.setText(expr);
+                        break;
+                    case R.id.but7:
+                        expr += "7";
+                        res.setText(expr);
+                        break;
+                    case R.id.but8:
+                        expr += "8";
+                        res.setText(expr);
+                        break;
+                    case R.id.but9:
+                        expr += "9";
+                        res.setText(expr);
+                        break;
+                    case R.id.but0:
+                        expr += "0";
+                        res.setText(expr);
+                        break;
+                    case R.id.butPoint:
+                        expr += ".";
+                        res.setText(expr);
+                        break;
+                    case R.id.butPlus:
+                        if (expr.length() > 0 && isBinOperation(expr.charAt(expr.length() - 1))) {
+                            expr = expr.substring(0, expr.length() - 1);
+                        }
+                        expr += "+";
+                        res.setText(expr);
+                        break;
+                    case R.id.butMinus:
+                        if (expr.length() > 0 && isBinOperation(expr.charAt(expr.length() - 1))) {
+                            expr = expr.substring(0, expr.length() - 1);
+                        }
+                        expr += "-";
+                        res.setText(expr);
+                        break;
+                    case R.id.butMul:
+                        if (expr.length() > 0 && isBinOperation(expr.charAt(expr.length() - 1))) {
+                            expr = expr.substring(0, expr.length() - 1);
+                        }
+                        expr += "*";
+                        res.setText(expr);
+                        break;
+                    case R.id.butDiv:
+                        if (expr.length() > 0 && isBinOperation(expr.charAt(expr.length() - 1))) {
+                            expr = expr.substring(0, expr.length() - 1);
+                        }
+                        expr += "/";
+                        res.setText(expr);
+                        break;
+                    case R.id.butC:
+                        if (expr.length() > 0) {
+                            expr = expr.substring(0, expr.length() - 1);
+                        }
+                        res.setText(expr);
+                        break;
+                    case R.id.butAC:
+                        expr = "";
+                        res.setText(expr);
+                        break;
+                    case R.id.butEq:
+                        p = 0;
+                        String exAn = "";
+                        try {
+                            double answ = parsePriorityFirst();
+                            exAn = Double.toString(answ);
+                        } catch (Exception e) {
+                            exAn = "Error";
+                        }
+                        res.setText(exAn);
+                        expr = exAn;
+                        break;
+                }
             }
+        } catch (Exception e) {
+            res.setText("Error");
+            expr = "";
         }
     }
 
@@ -253,5 +262,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         expr = savedInstanceState.getString("expression");
+        res.setText(expr);
     }
 }
