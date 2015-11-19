@@ -11,7 +11,6 @@
     tools:context=".MainActivity">
 
     <TableRow android:layout_weight="1">
-
         <TextView
             android:id="@+id/screen"
             android:layout_width="match_parent"
@@ -44,19 +43,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textColor="#3190B0"
-            android:onClick="resultButton"
-            android:text="=" />
-
-    </TableRow>
-
-    <TableRow android:layout_weight="1">
-
-        <Button
-            style="@style/ButtonCalcStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
             android:onClick="digitButton"
             android:text="7" />
 
@@ -81,13 +67,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="changeSignButton"
+            android:text="±" />
+
+        <Button
+            style="@style/ButtonCalcStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:textColor="#3190B0"
-            android:onClick="operationButton"
-            android:text="÷" />
+            android:onClick="resultButton"
+            android:text="=" />
+
     </TableRow>
 
     <TableRow android:layout_weight="1">
 
+        <Button
+            style="@style/ButtonCalcStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="digitButton"
+            android:text="." />
         <Button
             style="@style/ButtonCalcStyle"
             android:layout_width="match_parent"
@@ -119,11 +121,28 @@
             android:layout_weight="1"
             android:textColor="#3190B0"
             android:onClick="operationButton"
-            android:text="×" />
+            android:text="÷" />
+
+        <Button
+            style="@style/ButtonCalcStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="#3190B0"
+            android:onClick="operationButton"
+            android:text="–" />
+
     </TableRow>
 
     <TableRow android:layout_weight="1">
 
+        <Button
+            style="@style/ButtonCalcStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="digitButton"
+            android:text="0" />
         <Button
             style="@style/ButtonCalcStyle"
             android:layout_width="match_parent"
@@ -155,34 +174,7 @@
             android:layout_weight="1"
             android:textColor="#3190B0"
             android:onClick="operationButton"
-            android:text="+" />
-    </TableRow>
-
-    <TableRow android:layout_weight="1">
-
-        <Button
-            style="@style/ButtonCalcStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:onClick="digitButton"
-            android:text="." />
-
-        <Button
-            style="@style/ButtonCalcStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:onClick="digitButton"
-            android:text="0" />
-
-        <Button
-            style="@style/ButtonCalcStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:onClick="changeSignButton"
-            android:text="±" />
+            android:text="×" />
 
         <Button
             style="@style/ButtonCalcStyle"
@@ -191,6 +183,8 @@
             android:layout_weight="1"
             android:textColor="#3190B0"
             android:onClick="operationButton"
-            android:text="–" />
+            android:text="+" />
+
     </TableRow>
+
 </TableLayout>
