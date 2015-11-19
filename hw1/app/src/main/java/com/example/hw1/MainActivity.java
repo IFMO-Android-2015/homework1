@@ -73,13 +73,13 @@ public class MainActivity extends Activity {
                         }
                         text.setText(st);
                         break;
-                    case R.id.buttonC:
+                    case R.id.buttonCE:
                         //delete one number
                         st = "";
                         text.setText(st);
                         break;
-                    case R.id.buttonCE:
-                        //delete two number
+                    case R.id.buttonC:
+                        //delete two numbers
                         st = "";
                         first = 0.0;
                         mark = "n";
@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
                     case R.id.buttonSlash:
                         if (!mark.equals("n") && st.length() > 0) {
                             second = Double.parseDouble(st);
-                            getMark();
+                            makeOperation();
                             if (Double.toString(first).contains("Inf") || Double.toString(first).contains("NaN")) {
                                 st = "Error";
                                 text.setText(st);
@@ -139,15 +139,17 @@ public class MainActivity extends Activity {
                             if (st.equals("-0")) {
                                 st = "0";
                             }
-                            st = "Answer is " + st;
+                            if (!st.isEmpty()) {
+                                st = "Answer is " + st;
+                            }
                             text.setText(st);
                             st = "";
                         } else {
                             if (st.length() > 0) {
                                 second = Double.parseDouble(st);
                             }
-                            getMark();
-                            if (!Double.toString(first).contains("Inf") && !Double.toString(first).contains("Nan")) {
+                            makeOperation();
+                            if (!Double.toString(first).contains("Inf") && !Double.toString(first).contains("NaN")) {
                                 first = new BigDecimal(first).setScale(6, RoundingMode.HALF_UP).doubleValue();
                             }
                             st = Double.toString(first);
@@ -195,7 +197,7 @@ public class MainActivity extends Activity {
         buttonMinus.setOnClickListener(onClicker);
     }
 
-    private void getMark() {
+    private void makeOperation() {
         switch (mark) {
             case "+":
                 first += second;
