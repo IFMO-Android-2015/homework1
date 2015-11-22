@@ -1,0 +1,11 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">5dp</dimen>
+    <dimen name="activity_vertical_margin">5dp</dimen>
+
+    <dimen name="textViewSizePort">40sp</dimen>
+    <dimen name="textViewHeightPort">200dp</dimen>
+
+    <dimen name="textViewSizeLand">30sp</dimen>
+    <dimen name="textViewHeightLand">100dp</dimen>
+</resources>
