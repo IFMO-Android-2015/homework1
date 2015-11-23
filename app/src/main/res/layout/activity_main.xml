@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity"
+    android:background="@color/darkGray">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:id="@+id/text_view"
+        android:singleLine="false"
+        android:textSize="100dp"
+        android:text="0"
+        android:textColor="@android:color/white"
+        android:background="@color/darkGray"
+        android:gravity="right" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:text = "C"
+                android:background="@color/gray"
+                android:onClick="onCancelBtnClick"
+                android:layout_margin="1dp"
+                android:id="@+id/sign_btn_cancel" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "÷"
+                android:background="@color/orange"
+                android:textColor="@android:color/white"
+                android:textSize="40dp"
+                android:layout_margin="1dp"
+                android:onClick="onSignBtnClick"
+                android:id="@+id/sign_btn_div" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text = "7"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_7" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "8"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_8" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "9"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_9" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "x"
+                android:background="@color/orange"
+                android:textColor="@android:color/white"
+                android:textSize="40dp"
+                android:layout_margin="1dp"
+                android:onClick="onSignBtnClick"
+                android:id="@+id/sign_btn_mul" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text = "4"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_4" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "5"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_5" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "6"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_6" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "-"
+                android:background="@color/orange"
+                android:textColor="@android:color/white"
+                android:textSize="40dp"
+                android:layout_margin="1dp"
+                android:onClick="onSignBtnClick"
+                android:id="@+id/sign_btn_sub" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text = "1"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_1" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "2"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_2" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "3"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_3" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "+"
+                android:background="@color/orange"
+                android:textColor="@android:color/white"
+                android:textSize="40dp"
+                android:layout_margin="1dp"
+                android:onClick="onSignBtnClick"
+                android:id="@+id/sign_btn_plus" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text = "0"
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onDigitBtnClick"
+                android:id="@+id/digit_btn_0" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = ","
+                android:layout_margin="1dp"
+                android:background="@color/gray"
+                android:onClick="onSignBtnClick" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text = "="
+                android:background="@color/orange"
+                android:textColor="@android:color/white"
+                android:textSize="40dp"
+                android:layout_margin="1dp"
+                android:onClick="onEqualBtnClick"
+                android:id="@+id/sign_btn_equ" />
+        </TableRow>
+    </TableLayout>
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter login"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter password"
+            />
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Login"
+            />
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#f00"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
+    -->
+</LinearLayout>
