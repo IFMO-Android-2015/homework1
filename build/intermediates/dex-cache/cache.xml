@@ -2,46 +2,46 @@
 <items version="2" >
 
     <item
+        jar="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-a0bfa9f1c057e630edfb24060ae0ecd09927b669.jar" />
+    </item>
+    <item
+        jar="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/pre-dexed/debug/classes-e6af345190e275295db7d10b8852cbfff2458d1d.jar" />
+    </item>
+    <item
+        jar="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/pre-dexed/debug/classes-db3079df7399a820d35a44c86ee333e5838ee48f.jar" />
+    </item>
+    <item
+        jar="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/pre-dexed/debug/classes-c635c99fcacbaf2bb7e7ec1cd531bf0a3c0b1785.jar" />
+    </item>
+    <item
         jar="/Users/sofya/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-1bd0fd1cb11839e215bf55d59fd09682f4f28562.jar" />
+        <dex dex="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-1bd0fd1cb11839e215bf55d59fd09682f4f28562.jar" />
     </item>
     <item
-        jar="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-5dc740a38cc26ee0580e9b9b15dba95f39afafd7.jar" />
-    </item>
-    <item
-        jar="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
+        jar="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/pre-dexed/debug/classes-2011c46dc57dc9fa6e0722c2e69a831995e1b321.jar" />
-    </item>
-    <item
-        jar="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/pre-dexed/debug/classes-d857db463e04f14f3925a0263dfd08b41ac2a884.jar" />
-    </item>
-    <item
-        jar="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/pre-dexed/debug/classes-1280b76ee3b80caa9f185a03c64d5d6b1a7d993a.jar" />
-    </item>
-    <item
-        jar="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="/Users/sofya/AndroidStudioProjects/Calculate/app/build/intermediates/pre-dexed/debug/classes-1a679a4f5ff0518bd3bdac97556af9d29eb070fe.jar" />
+        <dex dex="/Users/sofya/Documents/Programming/Android/homework1/app/build/intermediates/pre-dexed/debug/classes-e2521d223241364292bf42cd3c2fcaed95646a87.jar" />
     </item>
 
 </items>

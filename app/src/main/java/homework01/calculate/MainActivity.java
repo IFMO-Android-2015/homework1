@@ -16,17 +16,13 @@ public class MainActivity extends AppCompatActivity {
     String number = "";
     double ans = 0;
     ArrayList<String> expr = new ArrayList<>();
-    ArrayList<String> oper = new ArrayList<>(Arrays.asList(new String[]{"+", "-", "*", "/"}));
+    ArrayList<String> oper = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
     TextView textView;
 
     public void onClick(View view) {
         Button button = (Button)findViewById(view.getId());
         String text = (String) button.getText();
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            textView = (TextView) findViewById(R.id.editText);
-        } else {
-            textView = (TextView) findViewById(R.id.editText2);
-        }
+        textView = (TextView) findViewById(R.id.editText);
 
         if (text.equals("AC")) {
             number = "";
@@ -140,11 +136,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         number = savedInstanceState.getString("number");
         expr = savedInstanceState.getStringArrayList("expression");
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            textView = (TextView) findViewById(R.id.editText);
-        } else {
-            textView = (TextView) findViewById(R.id.editText2);
-        }
+        textView = (TextView) findViewById(R.id.editText);
         textView.setText(savedInstanceState.getString("state"));
     }
 
