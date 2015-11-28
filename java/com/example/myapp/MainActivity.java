@@ -1,4 +1,4 @@
-package com.example.clitcommander;
+package com.example.myapp;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -37,7 +37,7 @@ public class MainActivity extends Activity{
 
     private Double solve(String expression) throws ParseException, NumberFormatException {
         Integer opIndex = null;
-        for (int i = 0, amount = 0; i < expression.length(); i++) {
+        for (int i = 0; i < expression.length(); i++) {
             if((expression.charAt(i) == '+' || expression.charAt(i) == '-' ||
                     expression.charAt(i) == '*' || expression.charAt(i) == '/') &&
                     i != 0) {
@@ -72,10 +72,10 @@ public class MainActivity extends Activity{
                 wasError = false;
             }
             switch (v.getId()) {
-                case com.example.clitcommander.R.id.btnClean:
+                case R.id.btnClean:
                     textView.setText("");
                     break;
-                case com.example.clitcommander.R.id.btnSolve:
+                case R.id.btnSolve:
                     if (textView.length() != 0) {
                         try {
                             textView.setText(Double.toString(solve(textView.getText().toString())));
@@ -86,16 +86,16 @@ public class MainActivity extends Activity{
                         }
                     }
                     break;
-                case com.example.clitcommander.R.id.btnPlus:
+                case R.id.btnPlus:
                     textView.append("+");
                     break;
-                case com.example.clitcommander.R.id.btnMinus:
+                case R.id.btnMinus:
                     textView.append("-");
                     break;
-                case com.example.clitcommander.R.id.btnMultiply:
+                case R.id.btnMultiply:
                     textView.append("*");
                     break;
-                case com.example.clitcommander.R.id.btnDivide:
+                case R.id.btnDivide:
                     textView.append("/");
                     break;
             }
@@ -114,37 +114,37 @@ public class MainActivity extends Activity{
                 wasCorrectAnswer = false;
             }
             switch (v.getId()) {
-                case com.example.clitcommander.R.id.btnDigit0:
+                case R.id.btnDigit0:
                     textView.append("0");
                     break;
-                case com.example.clitcommander.R.id.btnPoint:
+                case R.id.btnPoint:
                     textView.append(".");
                     break;
-                case com.example.clitcommander.R.id.btnDigit1:
+                case R.id.btnDigit1:
                     textView.append("1");
                     break;
-                case com.example.clitcommander.R.id.btnDigit2:
+                case R.id.btnDigit2:
                     textView.append("2");
                     break;
-                case com.example.clitcommander.R.id.btnDigit3:
+                case R.id.btnDigit3:
                     textView.append("3");
                     break;
-                case com.example.clitcommander.R.id.btnDigit4:
+                case R.id.btnDigit4:
                     textView.append("4");
                     break;
-                case com.example.clitcommander.R.id.btnDigit5:
+                case R.id.btnDigit5:
                     textView.append("5");
                     break;
-                case com.example.clitcommander.R.id.btnDigit6:
+                case R.id.btnDigit6:
                     textView.append("6");
                     break;
-                case com.example.clitcommander.R.id.btnDigit7:
+                case R.id.btnDigit7:
                     textView.append("7");
                     break;
-                case com.example.clitcommander.R.id.btnDigit8:
+                case R.id.btnDigit8:
                     textView.append("8");
                     break;
-                case com.example.clitcommander.R.id.btnDigit9:
+                case R.id.btnDigit9:
                     textView.append("9");
                     break;
             }
@@ -154,19 +154,19 @@ public class MainActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.example.clitcommander.R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
-        btnDigit0 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit0);
-        btnPoint = (Button) findViewById(com.example.clitcommander.R.id.btnPoint);
-        btnDigit1 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit1);
-        btnDigit2 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit2);
-        btnDigit3 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit3);
-        btnDigit4 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit4);
-        btnDigit5 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit5);
-        btnDigit6 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit6);
-        btnDigit7 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit7);
-        btnDigit8 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit8);
-        btnDigit9 = (Button) findViewById(com.example.clitcommander.R.id.btnDigit9);
+        btnDigit0 = (Button) findViewById(R.id.btnDigit0);
+        btnPoint = (Button) findViewById(R.id.btnPoint);
+        btnDigit1 = (Button) findViewById(R.id.btnDigit1);
+        btnDigit2 = (Button) findViewById(R.id.btnDigit2);
+        btnDigit3 = (Button) findViewById(R.id.btnDigit3);
+        btnDigit4 = (Button) findViewById(R.id.btnDigit4);
+        btnDigit5 = (Button) findViewById(R.id.btnDigit5);
+        btnDigit6 = (Button) findViewById(R.id.btnDigit6);
+        btnDigit7 = (Button) findViewById(R.id.btnDigit7);
+        btnDigit8 = (Button) findViewById(R.id.btnDigit8);
+        btnDigit9 = (Button) findViewById(R.id.btnDigit9);
 
         btnDigit0.setOnClickListener(digitListener);
         btnPoint.setOnClickListener(digitListener);
@@ -180,10 +180,10 @@ public class MainActivity extends Activity{
         btnDigit8.setOnClickListener(digitListener);
         btnDigit9.setOnClickListener(digitListener);
 
-        btnPlus = (Button) findViewById(com.example.clitcommander.R.id.btnPlus);
-        btnMinus = (Button) findViewById(com.example.clitcommander.R.id.btnMinus);
-        btnMultiply = (Button) findViewById(com.example.clitcommander.R.id.btnMultiply);
-        btnDivide = (Button) findViewById(com.example.clitcommander.R.id.btnDivide);
+        btnPlus = (Button) findViewById(R.id.btnPlus);
+        btnMinus = (Button) findViewById(R.id.btnMinus);
+        btnMultiply = (Button) findViewById(R.id.btnMultiply);
+        btnDivide = (Button) findViewById(R.id.btnDivide);
 
         btnPlus.setOnClickListener(opListener);
         btnMinus.setOnClickListener(opListener);
@@ -191,12 +191,12 @@ public class MainActivity extends Activity{
         btnDivide.setOnClickListener(opListener);
 
 
-        btnSolve = (Button) findViewById(com.example.clitcommander.R.id.btnSolve);
-        btnClean = (Button) findViewById(com.example.clitcommander.R.id.btnClean);
+        btnSolve = (Button) findViewById(R.id.btnSolve);
+        btnClean = (Button) findViewById(R.id.btnClean);
 
         btnSolve.setOnClickListener(opListener);
         btnClean.setOnClickListener(opListener);
-        textView = (TextView) findViewById(com.example.clitcommander.R.id.expression);
+        textView = (TextView) findViewById(R.id.expression);
     }
 
     @Override
