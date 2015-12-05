@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+
+    </style>
+    <style name="ThinText" parent="AppTheme">
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+    <style name="Screen" parent="ThinText">
+        <item name="android:background">#455a64</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:textColor">#a7ffeb</item>
+    </style>
+    <style name="ButtonStyle" parent="ThinText">
+        <item name="android:background">@drawable/button_drawable</item>
+
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">#64ffda</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="DigitButton" parent="ButtonStyle">
+        <item name="android:onClick">onDigitClick</item>
+    </style>
+    <style name="EqualsButton" parent="ButtonStyle">
+        <item name="android:onClick">onEqualsClick</item>
+        <item name="android:background">@drawable/operation_drawable</item>
+    </style>
+    <style name="OperationButton" parent="ButtonStyle">
+        <item name="android:onClick">onOperationClick</item>
+        <item name="android:background">@drawable/operation_drawable</item>
+    </style>
+    <style name="DeleteButton" parent="ButtonStyle">
+        <item name="android:onClick">onDeleteClick</item>
+    </style>
+</resources>
