@@ -6,9 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText num1, num2;
 
@@ -57,10 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 default:
                     res = a * b;
             }
-            DecimalFormat decimalFormat = new DecimalFormat();
-            decimalFormat.setMaximumFractionDigits(6);
-            decimalFormat.setMinimumFractionDigits(0);
-
             num1.setText(Double.toString(res));
             num2.setText("");
         } catch (Exception e) {
