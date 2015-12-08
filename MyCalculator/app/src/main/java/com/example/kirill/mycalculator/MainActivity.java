@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     enum Operation {
         NOTHING,
-        MULTIPLICATION ,
+        MULTIPLICATION,
         ADDITION,
         DIVISION,
         SUBTRACTION
