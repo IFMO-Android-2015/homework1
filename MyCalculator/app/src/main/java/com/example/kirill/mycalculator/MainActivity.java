@@ -33,7 +33,15 @@ public class MainActivity extends AppCompatActivity {
         String numb = editText.getText().toString();
         double operand = 0;
         if(numb.length() > 0) {
-            operand = Double.parseDouble(editText.getText().toString());
+            try {
+                operand = Double.parseDouble(editText.getText().toString());
+            } catch (Throwable ex) {
+                operand = 0;
+                curOperation = Operation.NOTHING;
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Wrong number!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
         editText.setText("");
         return operand;
@@ -42,82 +50,50 @@ public class MainActivity extends AppCompatActivity {
     // worst programming below
     private void add() {
         if(curOperation == Operation.NOTHING) {
-            try {
-                first = toDouble();
-                curOperation = Operation.ADDITION;
-            } catch (Throwable exp) {
-                first = 0;
-                curOperation = Operation.NOTHING;
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Wrong number!", Toast.LENGTH_SHORT);
-                toast.show();
-            }
+            curOperation = Operation.ADDITION;
+            first = toDouble();
         } else if(curOperation != Operation.ADDITION) {
+            curOperation = Operation.ADDITION;
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Addition now", Toast.LENGTH_SHORT);
             toast.show();
-            curOperation = Operation.ADDITION;
         }
     }
 
     private void subtract() {
         if(curOperation == Operation.NOTHING) {
-            try {
-                first = toDouble();
-                curOperation = Operation.SUBTRACTION;
-            } catch (Throwable exp) {
-                first = 0;
-                curOperation = Operation.NOTHING;
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Wrong number!", Toast.LENGTH_SHORT);
-                toast.show();
-            }
+            curOperation = Operation.SUBTRACTION;
+            first = toDouble();
         } else if(curOperation != Operation.SUBTRACTION) {
+            curOperation = Operation.SUBTRACTION;
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Subtraction now", Toast.LENGTH_SHORT);
             toast.show();
-            curOperation = Operation.SUBTRACTION;
         }
 
     }
 
     private void multiply() {
         if(curOperation == Operation.NOTHING) {
-            try {
-                first = toDouble();
-                curOperation = Operation.MULTIPLICATION;
-            } catch (Throwable exp) {
-                first = 0;
-                curOperation = Operation.NOTHING;
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Wrong number!", Toast.LENGTH_SHORT);
-                toast.show();
-            }
+            curOperation = Operation.MULTIPLICATION;
+            first = toDouble();
         } else if(curOperation != Operation.MULTIPLICATION) {
+            curOperation = Operation.MULTIPLICATION;
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Multiplication now", Toast.LENGTH_SHORT);
             toast.show();
-            curOperation = Operation.MULTIPLICATION;
         }
     }
 
     private void divide() {
         if(curOperation == Operation.NOTHING) {
-            try {
-                first = toDouble();
-                curOperation = Operation.DIVISION;
-            } catch (Throwable exp) {
-                first = 0;
-                curOperation = Operation.NOTHING;
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Wrong number!", Toast.LENGTH_SHORT);
-                toast.show();
-            }
+            curOperation = Operation.DIVISION;
+            first = toDouble();
         } else if(curOperation != Operation.DIVISION) {
+            curOperation = Operation.DIVISION;
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Division now", Toast.LENGTH_SHORT);
             toast.show();
-            curOperation = Operation.DIVISION;
         }
     }
 
