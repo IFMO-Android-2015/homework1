@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/calcPrimary</item>
+        <item name="colorPrimaryDark">@color/calcSecondary</item>
+        <item name="colorAccent">@color/calcAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorLightGreen</item>
+    </style>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="calcPrimary">@color/md_blue_400</color>
+    <color name="calcSecondary">@color/md_blue_700</color>
+    <color name="calcAccent">@color/md_pink_300</color>
+    <color name="calcBackground">@color/md_light_blue_100</color>
+    <color name="calcText">@color/md_black_1000</color>
+    <color name="colorLightBlue">#53a7ea</color>
+    <color name="colorLightGreen">#53ea93</color>
+    <color name="buttonColor">#6d6d6d</color>
+</resources>
