@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.pav.homework1.save.Container;
+import com.example.pav.homework1.save.SaveFragment;
+
 import java.util.ArrayDeque;
 import java.util.Queue;
 
@@ -20,11 +23,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button one, two, three, subtract, equal;
     Button zero, triple_zero, dot, add;
 
-    float result, memory = 0;
-    boolean dot_control = true;
-    String stack_info = "";
-    Queue<Float> numbers;
-    Queue<Character> operations;
+    private SaveFragment saveFragment;
+    private Container container;
+    private float memory;
+    private boolean dot_control;
+    private String stack_info;
+    private Queue<Float> numbers;
+    private Queue<Character> operations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +117,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         operations = new ArrayDeque<>();
         numbers.clear();
         operations.clear();
+
+        /**
+         * Востанавливаем состояние после поворота экрана.
+         */
+        saveFragment = (SaveFragment) getFragmentManager().findFragmentByTag("SAVE_FRAGMENT");
+        if (saveFragment != null) {
+            container = saveFragment.getModel();
+            memory = container.memory;
+            dot_control = container.dot_control;
+            stack_info = container.stack_info;
+            numbers = container.numbers;
+            operations = container.operations;
+            memory_visible();
+        } else {
+            saveFragment = new SaveFragment();
+            getFragmentManager().beginTransaction().add(saveFragment, "SAVE_FRAGMENT")
+                    .commit();
+            memory = 0;
+            dot_control = true;
+            stack_info = "";
+        }
+    }
+
+    /**
+     * Сохраняем состояние экрана при разрушении активити.
+     */
+    @Override
+    protected void onPause() {
+        String active_text = active.getText().toString();
+        String stack_text = stack.getText().toString();
+        container = new Container(memory, dot_control, stack_info, numbers, operations,
+                active_text, stack_text);
+        saveFragment.setModel(container);
+        super.onPause();
     }
 
     @Override
@@ -242,8 +281,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void add_to_stack(String active_text, char op) {
         dot_control = true;
-        String stack_text;
-        stack_text = stack.getText().toString();
+        String stack_text = stack.getText().toString();
         if (!active_text.isEmpty())
             stack.setText(stack_text + " " + active_text + " " + op);
         else {
@@ -344,7 +382,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void calculation() {
         operations('=');
         stack.setText("");
-        result = numbers.remove();
+        float result = numbers.remove();
         while (!numbers.isEmpty()) {
             float next_num = numbers.remove();
             Log.d("div", result + " " + next_num);
@@ -367,7 +405,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         setText(result);
-        result = 0;
         numbers.clear();
         operations.clear();
     }
