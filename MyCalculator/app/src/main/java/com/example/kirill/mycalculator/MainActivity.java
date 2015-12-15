@@ -47,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         return operand;
     }
 
+    private void showToast(String message) {
+        Toast toast = Toast.makeText(getApplicationContext(),
+                message + " now", Toast.LENGTH_SHORT);
+        toast.show();
+
+    }
+
     // worst programming below
     private void add() {
         if(curOperation == Operation.NOTHING) {
@@ -54,9 +61,7 @@ public class MainActivity extends AppCompatActivity {
             first = toDouble();
         } else if(curOperation != Operation.ADDITION) {
             curOperation = Operation.ADDITION;
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Addition now", Toast.LENGTH_SHORT);
-            toast.show();
+            showToast("Addition");
         }
     }
 
@@ -66,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
             first = toDouble();
         } else if(curOperation != Operation.SUBTRACTION) {
             curOperation = Operation.SUBTRACTION;
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Subtraction now", Toast.LENGTH_SHORT);
-            toast.show();
+            showToast("Subtraction");
         }
 
     }
@@ -79,9 +82,7 @@ public class MainActivity extends AppCompatActivity {
             first = toDouble();
         } else if(curOperation != Operation.MULTIPLICATION) {
             curOperation = Operation.MULTIPLICATION;
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Multiplication now", Toast.LENGTH_SHORT);
-            toast.show();
+            showToast("Multiplication");
         }
     }
 
@@ -91,9 +92,7 @@ public class MainActivity extends AppCompatActivity {
             first = toDouble();
         } else if(curOperation != Operation.DIVISION) {
             curOperation = Operation.DIVISION;
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Division now", Toast.LENGTH_SHORT);
-            toast.show();
+            showToast("Division");
         }
     }
 
