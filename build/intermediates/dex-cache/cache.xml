@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\1\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="C:\Users\1\HOMEWORK\Calculator\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-cdedf570c2c75c090d70c24b3fc913c5e8eb4ee6.jar" />
+    </item>
+    <item
+        jar="C:\Users\1\GOVNO\homework1\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\Users\1\GOVNO\homework1\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-abc5f5c2656393af8a37a39300f8c4a42dfc5991.jar" />
+    </item>
+    <item
+        jar="C:\Users\1\HOMEWORK\Calculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\Users\1\HOMEWORK\Calculator\app\build\intermediates\pre-dexed\debug\classes-0e228f26c6fa3ad7a5ee461a759b33482a2a52c4.jar" />
+    </item>
+    <item
+        jar="C:\Users\1\GOVNO\homework1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="C:\Users\1\GOVNO\homework1\app\build\intermediates\pre-dexed\debug\classes-4c1d63d44024130bd8aac8877afcfe5808826424.jar" />
+    </item>
+    <item
+        jar="C:\Users\1\GOVNO\homework1\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\Users\1\GOVNO\homework1\app\build\intermediates\pre-dexed\debug\classes-5687551eba72d4e4e36a823a9b66c50b12594f89.jar" />
+    </item>
+    <item
+        jar="C:\Users\1\HOMEWORK\Calculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\Users\1\HOMEWORK\Calculator\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-7bca7f141a0aa8c804757f016fbc0ae9009db6c6.jar" />
+    </item>
+    <item
+        jar="C:\Users\1\HOMEWORK\Calculator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="C:\Users\1\HOMEWORK\Calculator\app\build\intermediates\pre-dexed\debug\classes-b4963eecaf136571eb38993511386b951c6d43a3.jar" />
+    </item>
+
+</items>
