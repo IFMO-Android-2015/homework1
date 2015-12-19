@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         mainActivity = this;
+        setText();
     }
 
 
