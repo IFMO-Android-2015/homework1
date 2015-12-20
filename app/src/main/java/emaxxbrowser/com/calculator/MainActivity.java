@@ -40,17 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             currentSign = lastActivity.currentSign;
         }
 
-        mainActivity = this;
         setText();
     }
 
-
     @Override
     public Object onRetainCustomNonConfigurationInstance() {
-        return mainActivity;
+        return this;
     }
-
-    private MainActivity mainActivity;
 
     private TextView firstFieldView;
     private TextView secondFieldView;
