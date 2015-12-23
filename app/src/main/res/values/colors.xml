@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="ansBack">#211f21</color>
+    <color name="ansText">#c5c5ca</color>
+    <color name="numBack">#ccccd1</color>
+    <color name="buttons">#cacbce</color>
+    <color name="signsBack">#fa7a10</color>
+    <color name="numText">#151619</color>
+    <color name="signsText">#E9E5CE</color>
+    <color name="lineBack">#c8c9cc</color>
+</resources>

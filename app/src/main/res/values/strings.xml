@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="allClearButton">AC</string>
+    <string name="changeSignButton">+/-</string>
+    <string name="delLastButton">\u003C</string>
+    <string name="divButton">÷</string>
+    <string name="nulButton">0</string>
+    <string name="comButton">,</string>
+    <string name="eqButton">=</string>
+    <string name="oneButton">1</string>
+    <string name="twoButton">2</string>
+    <string name="threeButton">3</string>
+    <string name="addButton">+</string>
+    <string name="fourButton">4</string>
+    <string name="fiveButton">5</string>
+    <string name="sixButton">6</string>
+    <string name="subtButton">–</string>
+    <string name="sevenButton">7</string>
+    <string name="eightButton">8</string>
+    <string name="nineButton">9</string>
+    <string name="mulButton">\u00D7</string>
+    <string name="ansNumberText">0</string>
+</resources>
