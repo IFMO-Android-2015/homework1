@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 1168B6 -->
+
+    <color name="field">#CBBABA</color>
+    <color name="buttons">#BFC6C3</color>
+    <color name="enter">#000000</color>
+    <color name="back">#216DFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grad_normal">#B3B3B3</color>
+    <color name="grad_pressed">#7D443C</color>
+    <color name="grad_disabled">#1E75C3</color>
+    <color name="grad_field">#645A69</color>
+
+</resources>
