@@ -4,184 +4,190 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import ru.ifmo.android_2015.activitylifecycle.R;
 
 public final class MainActivity extends Activity {
+    private enum Operation {
+        ADD, SUB, MUL, DIV, EQ, NONE;
+    }
+
     private static final String TAG = MainActivity.class.getSimpleName();
+    private TextView calcRes;
+    private BigDecimal leftOperand = null;
+    private BigDecimal rightOperand = null;
+    private Operation currentOperation = Operation.NONE;
 
-    //private static final int MAX_CLICK_COUNT = 3;
-    private static final String SAVED_EXPRESSION = "expr";
+    public void onDigitBtnClick(View view) {
+        Button b = (Button)view;
+        int currentDigit = Integer.parseInt(b.getText().toString());
+        if (rightOperand == null) {
+            rightOperand = new BigDecimal(0);
+        }
+        if (rightOperand.scale() > 0) {
+            int oldScale = rightOperand.scale();
+            Log.d(TAG, "scale: " + String.valueOf(oldScale));
+            int inc;
+            if (calcRes.getText().toString().endsWith(","))
+                inc = 0;
+            else
+                inc = 1;
+            rightOperand = rightOperand.setScale(oldScale + inc);
+            rightOperand = rightOperand.add(new BigDecimal(currentDigit).movePointLeft(oldScale + inc));
+        } else {
+            rightOperand = rightOperand.multiply(BigDecimal.TEN).add(new BigDecimal(currentDigit));
+        }
+        calcRes.setText(rightOperand.toPlainString());
+        Log.d(TAG, rightOperand.toPlainString());
+    }
 
-    private TextView resTextView;
-    private boolean wasSignBtnPressed;
-    //private View loginButton;
+    public void onCancelBtnClick(View view) {
+        calcRes.setText("0");
+        leftOperand = null;
+        rightOperand = null;
+        currentOperation = Operation.NONE;
+    }
 
-    //int clickCount = 0;
+    public void onDotBtnClick(View view) {
+        if (rightOperand == null) {
+            rightOperand = new BigDecimal(0);
+        }
+        if (rightOperand.scale() > 0) {
+            calcRes.setText(rightOperand.toPlainString());
+        } else {
+            String tmp = String.format("%s,", rightOperand.toPlainString());
+            calcRes.setText(tmp);
+            rightOperand = rightOperand.multiply(BigDecimal.TEN).movePointLeft(1);
+        }
+        Log.d(TAG, "scale: " + String.valueOf(rightOperand.scale()));
+        Log.d(TAG, rightOperand.toPlainString());
+    }
 
-    Expression expr;
+    private BigDecimal copy(BigDecimal other) {
+        return new BigDecimal(other.toString());
+    }
 
+    private void eval(Operation nextOperation) {
+        // trying to evaluate last operation (currentOperation)
+        if (currentOperation != Operation.NONE && rightOperand != null && leftOperand != null) {
+            Log.d(TAG, currentOperation.toString());
+            switch (currentOperation) {
+                case ADD:
+                    leftOperand = leftOperand.add(rightOperand);
+                    break;
+                case SUB:
+                    leftOperand = leftOperand.subtract(rightOperand);
+                    break;
+                case MUL:
+                    leftOperand = leftOperand.multiply(rightOperand);
+                    break;
+                case DIV:
+                    int scale = leftOperand.scale() + rightOperand.scale() + 4;
+                    if (scale == 4) {
+                        scale = 9;
+                    }
+                    if (rightOperand.equals(BigDecimal.ZERO)) {
+                        rightOperand = null;
+                        currentOperation = Operation.NONE;
+                        leftOperand = null;
+                        calcRes.setText("error: division by zero");
+                    } else {
+                        leftOperand = leftOperand.divide(rightOperand, scale, RoundingMode.CEILING);
+                    }
+                    break;
+            }
+            rightOperand = new BigDecimal(0);
+        }
+        if (nextOperation != Operation.EQ) {
+            // if next operation is not equal
+            // moving rightOperand to leftOperand
+            if (currentOperation == Operation.NONE) {
+                if (rightOperand != null) {
+                    leftOperand = copy(rightOperand);
+                }
+                rightOperand = null;
+            } else {
+                if (leftOperand != null) {
+                    calcRes.setText(leftOperand.toPlainString());
+                }
+            }
+            // updating current operation
+            currentOperation = nextOperation;
+
+        } else {
+            // if next operation is equal then current must become none
+            if (currentOperation == Operation.NONE && rightOperand != null && !rightOperand.equals(BigDecimal.ZERO)) {
+                calcRes.setText(rightOperand.toPlainString());
+            } else {
+                currentOperation = Operation.NONE;
+                rightOperand = null;
+                if (leftOperand != null) {
+                    calcRes.setText(leftOperand.toPlainString());
+                }
+            }
+        }
+    }
+
+    public void onSignBtnClick(View view) {
+        Button op = (Button)view;
+        Log.d(TAG, "getText() returns: " + op.getText().toString());
+        Log.d(TAG, "leftOperand: " + (leftOperand == null ? "null" : leftOperand.toPlainString()));
+        Log.d(TAG, "rightOperand: " + (rightOperand == null ? "null" : rightOperand.toPlainString()));
+        Operation nextOp = null;
+        switch (op.getText().toString()) {
+            case "=":
+                nextOp = Operation.EQ;
+                break;
+            case "+":
+                nextOp = Operation.ADD;
+                break;
+            case "-":
+                nextOp = Operation.SUB;
+                break;
+            case "*":
+                nextOp = Operation.MUL;
+                break;
+            case "÷":
+                nextOp = Operation.DIV;
+                break;
+        }
+        eval(nextOp);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
-
         setContentView(R.layout.activity_main);
-        resTextView = (TextView)findViewById(R.id.text_view);
-        resTextView.setText("0");
-        expr = new Expression();
-        wasSignBtnPressed = true;
-        /*
-        error = (TextView)findViewById(R.id.error);
-        loginButton = findViewById(R.id.login_button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickCount++;
-                updateUI();
-            }
-        });
-
+        calcRes = (TextView)findViewById(R.id.text_view);
         if (savedInstanceState != null) {
-            clickCount = savedInstanceState.getInt(EXTRA_CLICK_COUNT);
-            updateUI();
+            String savedOperand = savedInstanceState.getString("rightOperand");
+            if (savedOperand != null) {
+                rightOperand = new BigDecimal(savedOperand);
+            }
+            savedOperand = savedInstanceState.getString("leftOperand");
+            if (savedOperand != null) {
+                leftOperand = new BigDecimal(savedOperand);
+            }
+            currentOperation = Operation.valueOf(savedInstanceState.getString("currentOperation"));
+            calcRes.setText(savedInstanceState.getCharSequence("displayedValue"));
         }
-        */
     }
 
-    private void updateUI() {
-        /*
-        boolean disabled = clickCount >= MAX_CLICK_COUNT;
-        if (disabled) {
-            error.setVisibility(View.VISIBLE);
-            error.setText(MAX_CLICK_COUNT + " reached");
+    @Override
+    protected void onSaveInstanceState(Bundle savingBundle) {
+        super.onSaveInstanceState(savingBundle);
+        if (rightOperand != null) {
+            savingBundle.putString("rightOperand", rightOperand.toPlainString());
         }
-        else {
-            error.setVisibility(View.INVISIBLE);
+        if (leftOperand != null) {
+            savingBundle.putString("leftOperand", leftOperand.toPlainString());
         }
-
-        loginButton.setEnabled(!disabled);
-        */
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Log.d(TAG, "onStart");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        Log.d(TAG, "onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        Log.d(TAG, "onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        Log.d(TAG, "onStop");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        Log.d(TAG, "onDestroy");
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        Log.d(TAG, "onSaveInstanceState");
-
-        //outState.putInt(EXTRA_CLICK_COUNT, clickCount);
-        //outState.putInt("SIGN", expr.currentSign);
-    }
-
-    public void onDigitBtnClick(View view) {
-        char newDigit = '0';
-
-        switch (view.getId()) {
-            case R.id.digit_btn_0:
-                newDigit = '0';
-                break;
-            case R.id.digit_btn_1:
-                newDigit = '1';
-                break;
-            case R.id.digit_btn_2:
-                newDigit = '2';
-                break;
-            case R.id.digit_btn_3:
-                newDigit = '3';
-                break;
-            case R.id.digit_btn_4:
-                newDigit = '4';
-                break;
-            case R.id.digit_btn_5:
-                newDigit = '5';
-                break;
-            case R.id.digit_btn_6:
-                newDigit = '6';
-                break;
-            case R.id.digit_btn_7:
-                newDigit = '7';
-                break;
-            case R.id.digit_btn_8:
-                newDigit = '8';
-                break;
-            case R.id.digit_btn_9:
-                newDigit = '9';
-                break;
-        }
-
-        if (wasSignBtnPressed) resTextView.setText("" + newDigit);
-        else resTextView.setText(resTextView.getText().toString() + newDigit);
-
-        wasSignBtnPressed = false;
-        expr.addDigit(newDigit);
-
-        updateUI();
-    }
-
-    public void onSignBtnClick(View view) {
-
-        switch (view.getId()) {
-            case R.id.sign_btn_div:
-                expr.addSign(Expression.Sign.DIV);
-                break;
-            case R.id.sign_btn_mul:
-                expr.addSign(Expression.Sign.MUL);
-                break;
-            case R.id.sign_btn_plus:
-                expr.addSign(Expression.Sign.PLUS);
-                break;
-            case R.id.sign_btn_sub:
-                expr.addSign(Expression.Sign.SUB);
-                break;
-        }
-
-        wasSignBtnPressed = true;
-    }
-
-    public void onCancelBtnClick(View view) {
-        resTextView.setText("0");
-        wasSignBtnPressed = true;
-        expr.reset();
-    }
-
-    public void onEqualBtnClick(View view) {
-        resTextView.setText("Hello");
-        wasSignBtnPressed = true;
+        savingBundle.putString("currentOperation", currentOperation.toString());
+        savingBundle.putString("displayedValue", calcRes.getText().toString());
     }
 }

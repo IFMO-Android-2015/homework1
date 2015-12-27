@@ -90,7 +90,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text = "x"
+                android:text = "*"
                 android:background="@color/orange"
                 android:textColor="@android:color/white"
                 android:textSize="40dp"
@@ -210,7 +210,7 @@
                 android:text = ","
                 android:layout_margin="1dp"
                 android:background="@color/gray"
-                android:onClick="onSignBtnClick" />
+                android:onClick="onDotBtnClick" />
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -220,7 +220,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="40dp"
                 android:layout_margin="1dp"
-                android:onClick="onEqualBtnClick"
+                android:onClick="onSignBtnClick"
                 android:id="@+id/sign_btn_equ" />
         </TableRow>
     </TableLayout>
