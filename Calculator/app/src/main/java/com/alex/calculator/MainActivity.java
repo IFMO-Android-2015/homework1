@@ -110,6 +110,10 @@ public class MainActivity extends Activity implements View.OnTouchListener {
             return false;
         }
 
+        if (event.getAction() == MotionEvent.ACTION_MOVE) {
+            return false;
+        }
+
         if (v.getId() == R.id.btnClear) {
             output.setText(output.getText().toString().substring(0, output.getText().length() - 1));
 
@@ -260,6 +264,10 @@ public class MainActivity extends Activity implements View.OnTouchListener {
                 btnClear.setEnabled(true);
             } else {
                 output.setText(output.getText().toString().substring(1));
+                disabledAllClear = true;
+                btnAllClear.setEnabled(false);
+                disabledClear = true;
+                btnClear.setEnabled(false);
             }
 
             return false;
