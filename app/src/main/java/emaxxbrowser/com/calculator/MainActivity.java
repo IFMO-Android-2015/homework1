@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String currentSign;
 
     private void setText() {
-        firstFieldView.setText(firstField.getString().replace('.', DECIMAL_MARK).toCharArray(), 0, firstField.getString().length());
-        secondFieldView.setText(secondField.getString().replace('.', DECIMAL_MARK).toCharArray(), 0, secondField.getString().length());
-        signFieldView.setText(currentSign.toCharArray(), 0, currentSign.length());
+        firstFieldView.setText(firstField.getString().replace('.', DECIMAL_MARK));
+        secondFieldView.setText(secondField.getString().replace('.', DECIMAL_MARK));
+        signFieldView.setText(currentSign);
     }
 
     private static final char PLUS = '+';
